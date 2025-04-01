@@ -1,6 +1,6 @@
 // RACCOLTA DATI
 const km = parseInt(
-  prompt("Quale è il numero di km che devi percorrere?", "15")
+  prompt("Quale è il numero di km che devi percorrere?", "c")
 );
 const age = parseInt(prompt("Quale è la tua età?", "30"));
 const ticketPrice = km * 0.21;
@@ -15,15 +15,22 @@ console.log("age", age);
 let outputPrice;
 
 // SVOLGIMENTO
-if (age < 18) {
-  console.log("con sconto del 20%", underageDiscount);
-  outputPrice = "$" + underageDiscount.toFixed(2);
-} else if (age > 65) {
-  console.log("con sconto del 40%", seniorDiscount);
-  outputPrice = "$" + seniorDiscount.toFixed(2);
+
+// Verifica se i dati inseriti sono corretti
+if (!isNaN(age) && !isNaN(km)) {
+  if (age < 18) {
+    console.log("con sconto del 20%", underageDiscount);
+    outputPrice = "$" + underageDiscount.toFixed(2);
+  } else if (age > 65) {
+    console.log("con sconto del 40%", seniorDiscount);
+    outputPrice = "$" + seniorDiscount.toFixed(2);
+  } else {
+    console.log("ticket prize", ticketPrice);
+    outputPrice = "$" + ticketPrice.toFixed(2);
+  }
+  // Se non sono corretti
 } else {
-  console.log("ticket prize", ticketPrice);
-  outputPrice = "$" + ticketPrice.toFixed(2);
+  outputPrice = "Inserisci solo numeri!";
 }
 // OUTPUT
 alert(outputPrice);
