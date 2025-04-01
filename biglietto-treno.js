@@ -6,11 +6,24 @@ const age = parseInt(prompt("Quale è la tua età?", "30"));
 const ticketPrice = km * 0.21;
 const discount20 = (ticketPrice * 20) / 100;
 const discount40 = (ticketPrice * 40) / 100;
+const underageDiscount = ticketPrice - discount20;
+const seniorDiscount = ticketPrice - discount40;
 
 console.log("km", km);
 console.log("age", age);
-console.log("ticket prize", ticketPrice);
+
+let outputPrice;
 
 // SVOLGIMENTO
-
+if (age < 18) {
+  console.log("con sconto del 20%", underageDiscount);
+  outputPrice = "$" + underageDiscount.toFixed(2);
+} else if (age > 65) {
+  console.log("con sconto del 40%", seniorDiscount);
+  outputPrice = "$" + seniorDiscount.toFixed(2);
+} else {
+  console.log("ticket prize", ticketPrice);
+  outputPrice = "$" + ticketPrice.toFixed(2);
+}
 // OUTPUT
+alert(outputPrice);
